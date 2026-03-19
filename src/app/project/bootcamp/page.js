@@ -1,10 +1,11 @@
-import BootCampSideScroll from "@/components/SideScroll";
+import SideScroll from "@/components/SideScroll";
 
 export default function BootcampProjects() {
   return (
     <>
       {/*  */}
-      <h1>Bootcamp Projects</h1>
+
+      <SideScroll route={"../api/projects/bootcamp"} />
       {/*  */}
     </>
   );

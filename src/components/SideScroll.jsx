@@ -8,14 +8,16 @@ import * as sideScroll from "@/styles/sideScroll.module.css";
 import face from "@/../public/face.png";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-export default function BootCampSideScroll() {
+export default function SideScroll({ route, intro }) {
   const [entries, setEntries] = useState([" "]);
+  const urlData = usePathname();
 
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const response = await fetch("api/projects");
+        const response = await fetch(route);
         const data = await response.json();
         const dataSet = data.rows;
         console.log(dataSet);
@@ -25,8 +27,10 @@ export default function BootCampSideScroll() {
       }
     }
     fetchProjects();
-  }, [setEntries]);
+  }, [setEntries, route]);
 
+  // scroll logic
+  // TODO: make this so intro=false makes the scroll go the other way to intro=true
   const ITEM_WIDTH = 700;
 
   const containerRef = useRef(null);
@@ -45,20 +49,34 @@ export default function BootCampSideScroll() {
 
   return (
     <>
-      <section className={sideScroll.intro_section}>
-        <Image src={face} height={300} width={300} alt={"Annabel Peart"} />
-        <div>
-          <h1>Annabel Peart</h1>
-          <p>
-            Budding Software Developer with strengths in both front-end and
-            back-end JavaScript functionality; boasting an end-goal focus, and a
-            client driven perspective.{" "}
-            <Link href={`/about`}> Read More... </Link>
-          </p>
-        </div>
-      </section>
+      {urlData === "/" && intro ? (
+        <section className={sideScroll.intro_section}>
+          <Image src={face} height={300} width={300} alt={"Annabel Peart"} />
+          <div>
+            <h1>Annabel Peart</h1>
+            <p>
+              Budding Software Developer with strengths in both front-end and
+              back-end JavaScript functionality; boasting an end-goal focus, and
+              a client driven perspective.{" "}
+              <Link href={`/about`}> Read More... </Link>
+            </p>
+          </div>{" "}
+        </section>
+      ) : // : urlData === "/" && !intro ? (
+      //   <div className="h-0"></div>
+      // )
+      urlData === "/project/bootcamp" ? (
+        <section className={sideScroll.intro_section}>
+          <div>
+            <h1>Bootcamp Projects</h1>
+            <p>
+              These projects were completed throughout my participation in the
+              Tech Educators Software Development Bootcamp.
+            </p>
+          </div>
+        </section>
+      ) : null}
       {/* side scroll */}
-
       <div ref={containerRef} className={sideScroll.scroll_container}>
         <div className={sideScroll.sticky_wrapper}>
           <motion.div className={sideScroll.gallery} style={{ x }}>

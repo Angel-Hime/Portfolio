@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 export default function Menu() {
   const urlData = usePathname();
-  console.log(urlData);
+  // console.log(urlData);
   return (
     <NavigationMenu.Root className={styles.Root}>
       <NavigationMenu.List className={styles.MenuList}>
