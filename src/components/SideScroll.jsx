@@ -39,6 +39,10 @@ export default function BootCampSideScroll() {
   const totalDistance = (entries?.length - 1) * ITEM_WIDTH;
   const x = useTransform(scrollYProgress, [0, 1], [0, -totalDistance]);
 
+  function handleScrollTop() {
+    window.scrollTo(top);
+  }
+
   return (
     <>
       <section className={sideScroll.intro_section}>
@@ -46,12 +50,11 @@ export default function BootCampSideScroll() {
         <div>
           <h1>Annabel Peart</h1>
           <p>
-            Budding Software Developer with strengths in JavaScript
-            functionality both front- and back-end; an end-goal focus, and a
-            client driven perspective.
+            Budding Software Developer with strengths in both front-end and
+            back-end JavaScript functionality; boasting an end-goal focus, and a
+            client driven perspective.{" "}
+            <Link href={`/about`}> Read More... </Link>
           </p>
-
-          <Link href={`/about`}> Read More... </Link>
         </div>
       </section>
       {/* side scroll */}
@@ -95,20 +98,24 @@ export default function BootCampSideScroll() {
                         <div className="col-start-1 col-end-2 row-start-2 row-end-3"></div>
                       </aside>
                       <nav className={sideScroll.topNav}>
-                        <Link href={""} className="self-end">
-                          B
+                        <Link
+                          target="_blank"
+                          href={entry.git}
+                          className="self-end"
+                        >
+                          Code
                         </Link>
-                        <Link href={" "} className="self-start">
-                          A
+                        <Link
+                          target="_blank"
+                          href={entry.site}
+                          className="self-start"
+                        >
+                          Visit
                         </Link>
                       </nav>
                       <nav className={sideScroll.baseNav}>
-                        <Link href={entry.git} className=" ">
-                          Git
-                        </Link>
-                        <Link href={`/project/${entry.entry_id}`} className=" ">
-                          About
-                        </Link>
+                        <button onClick={handleScrollTop}>Back</button>
+                        <Link href={`/project/${entry.entry_id}`}>Details</Link>
                       </nav>
                     </div>
                   </main>

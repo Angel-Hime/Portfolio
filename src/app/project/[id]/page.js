@@ -1,3 +1,4 @@
+import computerScreen from "@/styles/computerScreen.module.css";
 import { db } from "@/utils/dbconnection";
 import Image from "next/image";
 
@@ -16,8 +17,8 @@ export default async function ProjectPage({ params }) {
 
   return (
     <>
-      <main className="main-display">
-        <div className="window-display">
+      <main className={computerScreen.mainDisplay}>
+        <section className={computerScreen.windowDisplay}>
           <h1>Project Title: {dbCall.entry_title}</h1>
           {dbCall.screenshot_url ? (
             <Image
@@ -38,7 +39,12 @@ export default async function ProjectPage({ params }) {
           <p>{dbCall.entry_date.toLocaleDateString()}</p>
           <p className="">Project Requirements & Stretch Goals:</p>
           <p className="mb-5 ">{dbCall.entry_content}</p>
-        </div>
+        </section>
+        <section className={computerScreen.boardDisplay}>
+          {/* the left and right keys change the image */}
+          <button>Left</button>
+          <button>Right</button>
+        </section>
       </main>
     </>
   );

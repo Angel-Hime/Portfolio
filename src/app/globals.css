@@ -7,7 +7,6 @@
   --border: rgba(255, 0, 242, 0.9);
   --item-color: #4d4c4c;
   scroll-behavior: smooth;
-  --Lato: "--font-lato";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,7 +22,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: bitCount;
   display: flex;
   flex-direction: column;
   gap: 20vh;

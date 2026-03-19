@@ -3,21 +3,19 @@
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
 import * as hideHeader from "@/styles/hideHeader.module.css";
+import Menu from "./Menu";
 
-export default function HideHeader() {
+export default function HideHeader({ urlData }) {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (current) => {
     const previous = scrollY.getPrevious() ?? 0;
+
     if (current > previous) {
-      // needs to be hidden at current = 200
-      // console.log(`previous ${previous}`);
-      // console.log(`current ${current}`);
       setHidden(true);
-    } else if (current > visualViewport.height) {
+    } else if (current > visualViewport.height * 0.85) {
       setHidden(true);
-      // console.log(visualViewport.height);
     } else {
       setHidden(false);
     }
@@ -35,9 +33,7 @@ export default function HideHeader() {
           <hr />
           <p>Software Developer</p>
         </div>
-        <nav className={hideHeader.navigation}>
-          {/* component for navigation drop down */}
-        </nav>
+        <Menu urlData={urlData} />
       </div>
     </motion.header>
   );
