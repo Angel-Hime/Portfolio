@@ -1,0 +1,38 @@
+body {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 2vh;
+}
+
+.mainDisplay {
+  height: 60vh;
+  width: 60vw;
+  border-radius: 1rem;
+  overflow: hidden;
+  padding: 2vmax;
+  background-color: var(--midground);
+  display: grid;
+  place-content: center;
+  & .windowDisplay {
+    overflow-y: scroll;
+    padding: 2vmax;
+    background-color: var(--item-color);
+    & section {
+      place-self: center;
+      padding: 1vmax;
+      background-color: var(--background);
+    }
+  }
+}
+
+.boardDisplay {
+  margin: 0 auto;
+  height: 15vh;
+  width: 50vw;
+  background-color: var(--midground);
+  border-radius: 10rem 10rem 1rem 1rem;
+  /* will have to amend this to provide for design */
+  display: grid;
+  place-items: center;
+}

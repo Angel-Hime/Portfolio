@@ -1,6 +1,5 @@
 body {
   overflow-x: hidden;
-
   scroll-snap-type: y mandatory;
   scroll-padding-bottom: 10%;
 }
@@ -9,38 +8,62 @@ body {
   height: 60vh;
   width: 90%;
   place-self: center;
-
   margin-top: 5vh;
-
   display: grid;
-
   justify-items: center;
   align-content: center;
   text-align: center;
   margin: 10vh 0;
-  & img {
+  & .hero {
+    height: fit-content;
     grid-area: 1 / 1 / 3 / 2;
-    place-self: center;
-    border-radius: 5rem;
+    background-color: var(--midground);
+    padding: 1vmax;
+    border-radius: 5px;
+
+    clip-path: polygon(
+      0 0,
+      calc(100% - 30px) 0,
+      calc(100% - 30px) 15px,
+      100% 15px,
+      100% 100%,
+      0 100%
+    );
+    display: flex;
+    gap: 1vh;
+    align-content: center;
+    justify-content: flex-end;
+
+    & section {
+      border-radius: 1em 3em 1em 1em;
+      align-self: left;
+      background-color: var(--background);
+      width: 15vw;
+      box-shadow: inset 1px 1px 3px var(--item-color);
+    }
+    & img {
+      border-radius: 0.5em;
+      border: 2px solid black;
+      box-shadow: inset 20px 20px 3px var(--background);
+    }
   }
   & div {
     grid-area: 1 / 2 / 3 / 3;
     display: flex;
     flex-direction: column;
     text-shadow: 1px 1px 5em var(--background);
-
     & h1 {
-      font-size: 3rem;
-      margin-right: 2em;
-      margin-top: 2rem;
+      font-size: 3vmax;
+      margin-right: 2vw;
+      margin-top: 1vh;
     }
     & p {
       text-align: left;
-      padding-left: 5rem;
-      font-size: 2rem;
+      padding-left: 5vw;
+      font-size: 2.5vmax;
       & a {
         margin-left: 1vw;
-        font-size: 2rem;
+        font-size: 2vmax;
         color: var(--midground);
 
         width: fit-content;
@@ -61,30 +84,26 @@ body {
   box-shadow: 0 5px 15px -3px #582f50;
   scroll-behavior: smooth;
   height: 500vh;
-  width: 200vw;
+  width: max-content;
   position: relative;
   place-self: center;
-  padding-left: 10vw;
 }
 
 .sticky_wrapper {
   position: sticky;
   top: 0;
   height: 100vh;
-
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   overflow: visible;
 }
 
 .gallery {
   display: flex;
-  gap: 6em;
-  margin-left: 50vw;
+  gap: 4vw;
+  margin-left: 350vw;
   will-change: transform;
-
   & :hover {
     box-shadow: 0 5px 15px -3px var(--item-color);
     transition: border-color 0.3s;
@@ -115,29 +134,22 @@ body {
   margin-left: 15vw;
   width: 27vw;
   height: 90vh;
-  gap: 3rem;
-
+  gap: 3vw;
   position: relative;
   overflow: hidden;
   background-position: center;
-
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  padding: 1rem 1.5rem;
-
+  padding: 1vh 1.5vw;
   background: var(--midground);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
-
   border-radius: 0.5rem 0.5rem 3rem 0.5rem;
-
   box-shadow: 0 5px 15px -3px var(--border);
   transition: border-color 0.3s;
-
   & :hover {
     animation-name: unset;
     box-shadow: unset;
@@ -148,13 +160,13 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 60%, var(--border));
+  background: linear-gradient(to bottom, transparent 50%, var(--border));
   mix-blend-mode: multiply;
 }
 
 .item_content {
   position: absolute;
-  top: 1.5em;
+  top: 1.5vh;
   z-index: 1;
   display: grid;
 
@@ -177,104 +189,93 @@ body {
     grid-row: 3/4;
     text-shadow: 3px 2px 3px #582f50;
     place-self: flex-start;
-
-    font-size: 1.2rem;
+    font-size: 1.2vmax;
     color: var(--item-color);
-    margin: 0;
   }
-  & aside {
-    margin-left: 2em;
-    padding-top: 3em;
-    width: 6em;
-    height: 6em;
+  & section {
+    grid-column: 1/3;
+    grid-row: 3/4;
+    margin-top: 3vh;
     display: grid;
+    height: 40vh;
+    & aside {
+      grid-area: 1/1/2/2;
+      margin-left: 2vw;
+      padding-top: 8vh;
+      width: 6vmax;
+      height: 6vmax;
+      display: grid;
 
-    & div {
-      border-radius: 5px;
-      height: 2em;
-      width: 2em;
-      background-color: white;
-      place-self: center;
-      cursor: pointer;
-      border: 1px solid #582f50;
-      border-width: 1px 1px 3px 1px;
-      box-shadow: 0px 1px 3px #582f50;
-      &:hover {
-        box-shadow: 1px 0px 3px #582f50;
-        border-width: 3px 2px 1px 2px;
+      & div {
+        border-radius: 5px;
+        height: 2vmax;
+        width: 2vmax;
+        background-color: white;
+        place-self: center;
+        cursor: pointer;
+        border: solid #582f50;
+        border-width: 2px 2px 3.5px 2px;
+        box-shadow: 0px 1px 3px #582f50;
+        &:hover {
+          box-shadow: 1px 0px 3px #582f50;
+          border-width: 3px 2px 1px 2px;
+        }
       }
     }
-  }
-  & .topNav {
-    grid-area: 4/2/5/3;
-    padding: 3em 0;
-    margin-left: 4em;
-    height: 12em;
-    width: 6em;
-    display: flex;
-    flex-direction: row;
+    & .topNav {
+      grid-area: 1/2/2/3;
+      padding: 3vh 0;
+      margin-left: 4vw;
+      margin-top: 4vh;
+      height: 20vh;
+      width: 8vw;
+      display: flex;
+      flex-direction: row;
+      & a {
+        background-color: white;
+        border-radius: 100%;
+        height: 7vh;
+        width: 4vw;
+        text-shadow: 0px 1px 0px var(--background);
+        color: var(--midground);
+        place-content: center;
 
-    & a {
-      background-color: white;
-      border-radius: 100%;
-      height: 6vh;
-      width: 6vw;
-      text-shadow: 0px 1px 0px var(--midground);
-
-      color: var(--midground);
-      place-content: center;
-      border: 1px solid #582f50;
-      font-size: small;
-      border-width: 1px 1px 3px 1px;
-      box-shadow: 0px 1px 3px #582f50;
-      &:hover {
-        box-shadow: 1px 0px 3px #582f50;
-        border-width: 4px 3px 1px 3px;
+        font-size: 0.85vmax;
+        border: solid #582f50;
+        border-width: 2px 2px 3.5px 2px;
+        box-shadow: 0px 1px 3px #582f50;
+        &:hover {
+          box-shadow: 1px 0px 3px #582f50;
+          border-width: 4px 3px 1px 3px;
+        }
       }
     }
-  }
-  & .baseNav {
-    grid-area: 5/1/6/3;
-    align-self: flex-start;
-    justify-self: center;
-    margin-top: 5vh;
-    display: flex;
-    flex-direction: row;
-    gap: 2vw;
+    & .baseNav {
+      grid-area: 2/1/3/3;
+      align-self: flex-start;
+      justify-self: center;
+      display: flex;
+      flex-direction: row;
+      gap: 2vw;
+      font-size: 0.85vmax;
 
-    & a {
-      background-color: white;
-      border-radius: 10px;
-      height: 3vh;
-      width: 5vw;
-      font-size: small;
-      text-shadow: 0px 1px 0px var(--midground);
+      & button {
+        text-align: center;
 
-      color: var(--midground);
-      border: 1px solid #582f50;
-      border-width: 1px 1px 3px 1px;
-      box-shadow: 0px 1px 3px #582f50;
-      &:hover {
-        box-shadow: 1px 0px 3px #582f50;
-        border-width: 3px 2px 1px 2px;
-      }
-    }
-    & button {
-      cursor: pointer;
-      background-color: white;
-      border-radius: 10px;
-      height: 3vh;
-      width: 5vw;
-      font-size: small;
-      text-shadow: 0px 1px 0px var(--midground);
-
-      color: var(--midground);
-      border: 1px solid #582f50;
-      border-width: 1px 1px 3px 1px;
-      box-shadow: 0px 1px 3px #582f50;
-      &:hover {
-        box-shadow: 1px 0px 3px #582f50;
-        border-width: 3px 2px 1px 2px;
+        cursor: pointer;
+        background-color: white;
+        border-radius: 10px;
+        height: 3vh;
+        width: 5vw;
+        text-shadow: 0px 1px 0px var(--background);
+        color: var(--midground);
+        border: solid #582f50;
+        border-width: 2px 2px 3.5px 2px;
+        box-shadow: 0px 1px 3px #582f50;
+        &:hover {
+          box-shadow: 1px 0px 3px #582f50;
+          border-width: 3px 2px 1px 2px;
+        }
       }
     }
   }

@@ -25,7 +25,6 @@ export default function Menu() {
         {urlData !== "/about" && urlData !== "/" ? (
           <>
             <NavigationMenu.Item>
-              {" "}
               <NavigationMenu.Link className={styles.Link} href={"/"}>
                 Home
               </NavigationMenu.Link>
@@ -45,6 +44,19 @@ export default function Menu() {
             <ul className={`${styles.List} one`}>
               <li style={{ gridRow: "span 3" }}>
                 <NavigationMenu.Link asChild>
+                  <Link className={styles.Callout} href="/project/bootcamp">
+                    <div className={styles.CalloutHeading}>
+                      Bootcamp Projects
+                    </div>
+                    <p className={styles.CalloutText}>
+                      Projects Completed During The Tech Educators Bootcamp
+                    </p>
+                  </Link>
+                </NavigationMenu.Link>
+              </li>
+
+              <li style={{ gridRow: "span 3" }}>
+                <NavigationMenu.Link asChild>
                   <Link className={styles.Callout} href="/project/personal">
                     <div className={styles.CalloutHeading}>
                       Personal Projects
@@ -52,18 +64,6 @@ export default function Menu() {
                     <p className={styles.CalloutText}>
                       Personal Projects Completed For Skills or Career
                       Development
-                    </p>
-                  </Link>
-                </NavigationMenu.Link>
-              </li>
-              <li style={{ gridRow: "span 3" }}>
-                <NavigationMenu.Link asChild>
-                  <Link className={styles.Callout} href="/project/bootcamp">
-                    <div className={styles.CalloutHeading}>
-                      Bootcamp Projects
-                    </div>
-                    <p className={styles.CalloutText}>
-                      Projects Completed During The Tech Educators Bootcamp
                     </p>
                   </Link>
                 </NavigationMenu.Link>

@@ -19,33 +19,36 @@ export default async function ProjectPage({ params }) {
     <>
       <main className={computerScreen.mainDisplay}>
         <section className={computerScreen.windowDisplay}>
-          <h1>Project Title: {dbCall.entry_title}</h1>
-          {dbCall.screenshot_url ? (
-            <Image
-              src={dbCall.screenshot_url}
-              alt={`image showing the web app ${dbCall.entry_title}`}
-              width={700}
-              height={300}
-            />
-          ) : (
-            <h2>
-              {" "}
-              Image not provide, click edit to update project: &quot;
-              {dbCall.entry_title}&quot;
-            </h2>
-          )}
+          <section>
+            <h1>Project Title: {dbCall.entry_title}</h1>
+            {dbCall.screenshot_url ? (
+              <Image
+                src={dbCall.screenshot_url}
+                alt={`image showing the web app ${dbCall.entry_title}`}
+                width={700}
+                height={300}
+              />
+            ) : (
+              <h2>
+                {" "}
+                Image not provide, click edit to update project: &quot;
+                {dbCall.entry_title}&quot;
+              </h2>
+            )}
 
-          <p className="">Completion Date:</p>
-          <p>{dbCall.entry_date.toLocaleDateString()}</p>
-          <p className="">Project Requirements & Stretch Goals:</p>
-          <p className="mb-5 ">{dbCall.entry_content}</p>
-        </section>
-        <section className={computerScreen.boardDisplay}>
-          {/* the left and right keys change the image */}
-          <button>Left</button>
-          <button>Right</button>
+            <p className="">Completion Date:</p>
+            <p>{dbCall.entry_date.toLocaleDateString()}</p>
+            <p className="">Project Requirements & Stretch Goals:</p>
+            <p className="mb-5 ">{dbCall.entry_content}</p>
+          </section>
         </section>
       </main>
+
+      <section className={computerScreen.boardDisplay}>
+        {/* the left and right keys change the image */}
+        <button>Left</button>
+        <button>Right</button>
+      </section>
     </>
   );
 }

@@ -10,7 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function SideScroll({ route, intro }) {
+export default function SideScroll({ route }) {
   const [entries, setEntries] = useState([" "]);
   const urlData = usePathname();
 
@@ -30,10 +30,10 @@ export default function SideScroll({ route, intro }) {
   }, [setEntries, route]);
 
   // scroll logic
-  // TODO: make this so intro=false makes the scroll go the other way to intro=true
-  const ITEM_WIDTH = 700;
+  const ITEM_WIDTH = 775;
 
   const containerRef = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -41,6 +41,7 @@ export default function SideScroll({ route, intro }) {
 
   // Move from first item centered to last item centered
   const totalDistance = (entries?.length - 1) * ITEM_WIDTH;
+
   const x = useTransform(scrollYProgress, [0, 1], [0, -totalDistance]);
 
   function handleScrollTop() {
@@ -49,9 +50,12 @@ export default function SideScroll({ route, intro }) {
 
   return (
     <>
-      {urlData === "/" && intro ? (
+      {urlData === "/" ? (
         <section className={sideScroll.intro_section}>
-          <Image src={face} height={300} width={300} alt={"Annabel Peart"} />
+          <div className={sideScroll.hero}>
+            <section>Software Developer</section>
+            <Image src={face} height={300} width={300} alt={"Annabel Peart"} />
+          </div>
           <div>
             <h1>Annabel Peart</h1>
             <p>
@@ -62,10 +66,7 @@ export default function SideScroll({ route, intro }) {
             </p>
           </div>{" "}
         </section>
-      ) : // : urlData === "/" && !intro ? (
-      //   <div className="h-0"></div>
-      // )
-      urlData === "/project/bootcamp" ? (
+      ) : urlData === "/project/bootcamp" ? (
         <section className={sideScroll.intro_section}>
           <div>
             <h1>Bootcamp Projects</h1>
@@ -89,14 +90,16 @@ export default function SideScroll({ route, intro }) {
                   >
                     <div className={sideScroll.item_content}>
                       <section className={sideScroll.image_container}>
+                        {/* component which is just a image
+                        component has props: entry.screenshot_url + handler? + sideScroll. (styles) */}
                         {entry.screenshot_url ? (
                           <Image
                             className={sideScroll.image}
                             src={entry.screenshot_url}
                             alt={`image showing the web app ${entry.entry_title}`}
                             // fix the sizing it is a bit big rn
-                            width={300}
-                            height={200}
+                            width={500}
+                            height={500}
                           />
                         ) : (
                           <h2 className={sideScroll.image}>
@@ -109,32 +112,37 @@ export default function SideScroll({ route, intro }) {
                       <h2 className={`${sideScroll.item_text}`}>
                         {entry.entry_title}{" "}
                       </h2>{" "}
-                      <aside className="col-start-1 col-end-2 row-start-4 row-end-5 ">
-                        <div className="col-start-2 col-end-3 row-start-1 row-end-2"></div>
-                        <div className="col-start-3 col-end-4 row-start-2 row-end-3"></div>
-                        <div className="col-start-2 col-end-3 row-start-3 row-end-4"></div>
-                        <div className="col-start-1 col-end-2 row-start-2 row-end-3"></div>
-                      </aside>
-                      <nav className={sideScroll.topNav}>
-                        <Link
-                          target="_blank"
-                          href={entry.git}
-                          className="self-end"
-                        >
-                          Code
-                        </Link>
-                        <Link
-                          target="_blank"
-                          href={entry.site}
-                          className="self-start"
-                        >
-                          Visit
-                        </Link>
-                      </nav>
-                      <nav className={sideScroll.baseNav}>
-                        <button onClick={handleScrollTop}>Back</button>
-                        <Link href={`/project/${entry.entry_id}`}>Details</Link>
-                      </nav>
+                      <section>
+                        <aside>
+                          <div className="col-start-2 col-end-3 row-start-1 row-end-2"></div>
+                          <div className="col-start-3 col-end-4 row-start-2 row-end-3"></div>
+                          <div className="col-start-2 col-end-3 row-start-3 row-end-4"></div>
+                          <div className="col-start-1 col-end-2 row-start-2 row-end-3"></div>
+                        </aside>
+                        <nav className={sideScroll.topNav}>
+                          <Link
+                            target="_blank"
+                            href={entry.git}
+                            className="self-end"
+                          >
+                            Code
+                          </Link>
+                          <Link
+                            target="_blank"
+                            href={entry.site}
+                            className="self-start"
+                          >
+                            Visit
+                          </Link>
+                        </nav>
+                        <nav className={sideScroll.baseNav}>
+                          <button onClick={handleScrollTop}>Back</button>
+
+                          <Link href={`/project/${entry.entry_id}`}>
+                            <button>Details</button>
+                          </Link>
+                        </nav>
+                      </section>
                     </div>
                   </main>
                 ))}

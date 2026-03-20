@@ -6,7 +6,7 @@ export async function GET(req, res) {
 
   try {
     // get user from db
-    // TODO: update to be 'WHERE situ = bootcamp'
+
     const dbCall = await client.query(
       `SELECT * FROM project_blog ORDER BY entry_date`,
     );
