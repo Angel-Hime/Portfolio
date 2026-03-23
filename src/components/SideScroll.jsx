@@ -64,6 +64,7 @@ export default function SideScroll({ route }) {
               a client driven perspective.{" "}
               <Link href={`/about`}> Read More... </Link>
             </p>
+            <h2>Portfolio Projects</h2>
           </div>{" "}
         </section>
       ) : urlData === "/project/bootcamp" ? (

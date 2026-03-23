@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  /* this needs to be fixed */
   --background: #ffffff;
   --foreground: rgb(56, 53, 53);
   --midground: rgba(255, 120, 248, 0.9);
@@ -12,7 +13,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: rgba(255, 255, 255, 0.9);
+    --foreground: #ffffff;
     --midground: rgba(230, 105, 223, 0.9);
     --border: rgba(200, 6, 190, 0.9);
     --item-color: #ffffff;
@@ -25,6 +26,4 @@ body {
   font-family: bitCount;
   display: flex;
   flex-direction: column;
-
-  margin-top: 10%;
 }

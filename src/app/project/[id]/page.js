@@ -1,6 +1,7 @@
-import computerScreen from "@/styles/computerScreen.module.css";
+import nES from "@/styles/nES.module.css";
 import { db } from "@/utils/dbconnection";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function ProjectPage({ params }) {
   const { id } = await params;
@@ -17,8 +18,8 @@ export default async function ProjectPage({ params }) {
 
   return (
     <>
-      <main className={computerScreen.mainDisplay}>
-        <section className={computerScreen.windowDisplay}>
+      <main className={nES.mainDisplay}>
+        <section className={nES.windowDisplay}>
           <section>
             <h1>Project Title: {dbCall.entry_title}</h1>
             {dbCall.screenshot_url ? (
@@ -44,10 +45,40 @@ export default async function ProjectPage({ params }) {
         </section>
       </main>
 
-      <section className={computerScreen.boardDisplay}>
-        {/* the left and right keys change the image */}
-        <button>Left</button>
-        <button>Right</button>
+      <section className={nES.systemMain}>
+        <div className={nES.console}>{/* buttons */}</div>
+
+        <nav className={nES.gamePad}>
+          {/* the left and right keys change the image */}
+          <section className={nES.leftButtons}>
+            <button
+              className={`col-start-2 col-end-3 row-start-1 row-end-2`}
+            ></button>
+            <button
+              className={`col-start-3 col-end-4 row-start-2 row-end-3`}
+            ></button>
+            <button
+              className={`col-start-2 col-end-3 row-start-3 row-end-4`}
+            ></button>
+            <button
+              className={`col-start-1 col-end-2 row-start-2 row-end-3`}
+            ></button>
+          </section>
+          {/* vestigial? */}
+          <section className={nES.centreButtons}>
+            <button className={``}>Select</button>
+            <button className={``}>Start</button>
+          </section>
+          {/* code and visit */}
+          <section className={nES.rightButtons}>
+            <Link target="_blank" href={dbCall.git} className="self-end">
+              Code
+            </Link>
+            <Link target="_blank" href={dbCall.site} className="self-start">
+              Visit
+            </Link>
+          </section>
+        </nav>
       </section>
     </>
   );

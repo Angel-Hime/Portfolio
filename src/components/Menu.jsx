@@ -11,25 +11,42 @@ export default function Menu() {
   return (
     <NavigationMenu.Root className={styles.Root}>
       <NavigationMenu.List className={styles.MenuList}>
-        <NavigationMenu.Item>
-          {urlData === "/" ? (
-            <NavigationMenu.Link className={styles.Link} href={"/about"}>
-              About
-            </NavigationMenu.Link>
-          ) : urlData === "/about" ? (
-            <NavigationMenu.Link className={styles.Link} href={"/"}>
-              Home
-            </NavigationMenu.Link>
-          ) : null}
-        </NavigationMenu.Item>
-        {urlData !== "/about" && urlData !== "/" ? (
+        {urlData === "/" ? (
           <>
-            <NavigationMenu.Item>
+            <NavigationMenu.Item className={styles.Item}>
+              <NavigationMenu.Link className={`${styles.LinkOne} `} href={"/"}>
+                Home
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item className={styles.Item}>
+              <NavigationMenu.Link className={styles.Link} href={"/about"}>
+                About
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </>
+        ) : urlData === "/about" ? (
+          <>
+            <NavigationMenu.Item className={styles.Item}>
               <NavigationMenu.Link className={styles.Link} href={"/"}>
                 Home
               </NavigationMenu.Link>
             </NavigationMenu.Item>
-            <NavigationMenu.Item>
+            <NavigationMenu.Item className={styles.Item}>
+              <NavigationMenu.Link className={styles.LinkOne} href={"/about"}>
+                About
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </>
+        ) : null}
+
+        {urlData !== "/about" && urlData !== "/" ? (
+          <>
+            <NavigationMenu.Item className={styles.Item}>
+              <NavigationMenu.Link className={styles.Link} href={"/"}>
+                Home
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item className={styles.Item}>
               <NavigationMenu.Link className={styles.Link} href={"/about"}>
                 About
               </NavigationMenu.Link>
@@ -37,6 +54,13 @@ export default function Menu() {
           </>
         ) : null}
         <NavigationMenu.Item>
+          <div className={styles.title}>
+            <h1 className={styles.heading}>Annabel Peart</h1>
+            <hr />
+            <p className={styles.subHeading}>Software Developer</p>
+          </div>
+        </NavigationMenu.Item>
+        <NavigationMenu.Item className={styles.Item}>
           <NavigationMenu.Trigger className={styles.Trigger}>
             Portfolio <CaretDownIcon className={styles.CaretDown} aria-hidden />
           </NavigationMenu.Trigger>
@@ -72,7 +96,7 @@ export default function Menu() {
           </NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        <NavigationMenu.Item>
+        <NavigationMenu.Item className={styles.Item}>
           <NavigationMenu.Link
             className={styles.Link}
             href="https://github.com/angel-hime"
