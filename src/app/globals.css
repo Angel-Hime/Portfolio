@@ -4,7 +4,7 @@
   /* this needs to be fixed */
   --background: #ffffff;
   --foreground: rgb(56, 53, 53);
-  --midground: rgba(255, 120, 248, 0.9);
+  --midground: rgba(255, 120, 248);
   --border: rgba(255, 0, 242, 0.9);
   --item-color: #4d4c4c;
   scroll-behavior: smooth;
@@ -14,7 +14,7 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ffffff;
-    --midground: rgba(230, 105, 223, 0.9);
+    --midground: rgba(230, 105, 223);
     --border: rgba(200, 6, 190, 0.9);
     --item-color: #ffffff;
   }

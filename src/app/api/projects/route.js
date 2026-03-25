@@ -8,7 +8,7 @@ export async function GET(req, res) {
     // get user from db
 
     const dbCall = await client.query(
-      `SELECT * FROM project_blog ORDER BY entry_date`,
+      `SELECT * FROM portfolio_projects ORDER BY entry_date`,
     );
     // console.log(dbCall);
     return Response.json(dbCall);
