@@ -7,30 +7,46 @@ import { usePathname } from "next/navigation";
 
 export default function Menu() {
   const urlData = usePathname();
-  console.log(urlData);
+  // console.log(urlData);
   return (
     <NavigationMenu.Root className={styles.Root}>
       <NavigationMenu.List className={styles.MenuList}>
-        <NavigationMenu.Item>
-          {urlData === "/" ? (
-            <NavigationMenu.Link className={styles.Link} href={"/about"}>
-              About
-            </NavigationMenu.Link>
-          ) : urlData === "/about" ? (
-            <NavigationMenu.Link className={styles.Link} href={"/"}>
-              Home
-            </NavigationMenu.Link>
-          ) : null}
-        </NavigationMenu.Item>
-        {urlData !== "/about" && urlData !== "/" ? (
+        {urlData === "/" ? (
           <>
-            <NavigationMenu.Item>
-              {" "}
+            <NavigationMenu.Item className={styles.Item}>
+              <NavigationMenu.Link className={`${styles.LinkOne} `} href={"/"}>
+                Home
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item className={styles.Item}>
+              <NavigationMenu.Link className={styles.Link} href={"/about"}>
+                About
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </>
+        ) : urlData === "/about" ? (
+          <>
+            <NavigationMenu.Item className={styles.Item}>
               <NavigationMenu.Link className={styles.Link} href={"/"}>
                 Home
               </NavigationMenu.Link>
             </NavigationMenu.Item>
-            <NavigationMenu.Item>
+            <NavigationMenu.Item className={styles.Item}>
+              <NavigationMenu.Link className={styles.LinkOne} href={"/about"}>
+                About
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </>
+        ) : null}
+
+        {urlData !== "/about" && urlData !== "/" ? (
+          <>
+            <NavigationMenu.Item className={styles.Item}>
+              <NavigationMenu.Link className={styles.Link} href={"/"}>
+                Home
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item className={styles.Item}>
               <NavigationMenu.Link className={styles.Link} href={"/about"}>
                 About
               </NavigationMenu.Link>
@@ -38,11 +54,31 @@ export default function Menu() {
           </>
         ) : null}
         <NavigationMenu.Item>
+          <div className={styles.title}>
+            <h1 className={styles.heading}>Annabel Peart</h1>
+            <hr />
+            <p className={styles.subHeading}>Software Developer</p>
+          </div>
+        </NavigationMenu.Item>
+        <NavigationMenu.Item className={styles.Item}>
           <NavigationMenu.Trigger className={styles.Trigger}>
             Portfolio <CaretDownIcon className={styles.CaretDown} aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className={styles.Content}>
             <ul className={`${styles.List} one`}>
+              <li style={{ gridRow: "span 3" }}>
+                <NavigationMenu.Link asChild>
+                  <Link className={styles.Callout} href="/project/bootcamp">
+                    <div className={styles.CalloutHeading}>
+                      Bootcamp Projects
+                    </div>
+                    <p className={styles.CalloutText}>
+                      Projects Completed During The Tech Educators Bootcamp
+                    </p>
+                  </Link>
+                </NavigationMenu.Link>
+              </li>
+
               <li style={{ gridRow: "span 3" }}>
                 <NavigationMenu.Link asChild>
                   <Link className={styles.Callout} href="/project/personal">
@@ -56,23 +92,11 @@ export default function Menu() {
                   </Link>
                 </NavigationMenu.Link>
               </li>
-              <li style={{ gridRow: "span 3" }}>
-                <NavigationMenu.Link asChild>
-                  <Link className={styles.Callout} href="/project/bootcamp">
-                    <div className={styles.CalloutHeading}>
-                      Bootcamp Projects
-                    </div>
-                    <p className={styles.CalloutText}>
-                      Projects Completed During The Tech Educators Bootcamp
-                    </p>
-                  </Link>
-                </NavigationMenu.Link>
-              </li>
             </ul>
           </NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        <NavigationMenu.Item>
+        <NavigationMenu.Item className={styles.Item}>
           <NavigationMenu.Link
             className={styles.Link}
             href="https://github.com/angel-hime"

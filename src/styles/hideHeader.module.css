@@ -19,32 +19,6 @@
 .header_content {
   max-width: 90vw;
   margin: 0 auto;
-
-  display: grid;
-  grid-template:
-    "a a a" auto
-    "c c c" 2ch
-    "b b b" 1em / 20% 20px 1fr;
-
-  & .title {
-    grid-area: a;
-    display: flex;
-    flex-direction: column;
-    color: var(--item-color);
-    font-size: 3rem;
-    & h1 {
-      align-self: center;
-      font-size: 2.5rem;
-    }
-    & hr {
-      width: 50%;
-      align-self: center;
-    }
-    & p {
-      align-self: center;
-      font-size: 1.5rem;
-    }
-  }
 }
 
 .navigation {

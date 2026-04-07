@@ -28,11 +28,6 @@ export default function HideHeader({ urlData }) {
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <div className={hideHeader.header_content}>
-        <div className={hideHeader.title}>
-          <h1>Annabel Peart</h1>
-          <hr />
-          <p>Software Developer</p>
-        </div>
         <Menu urlData={urlData} />
       </div>
     </motion.header>
