@@ -5,6 +5,7 @@ body {
   place-items: center;
   gap: 1vh;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .mainDisplay {
@@ -14,6 +15,9 @@ body {
   overflow: hidden;
   padding: 2vmax;
   background-color: var(--midground);
+  box-shadow:
+    -3px -3px 5px var(--border),
+    3px 3px 5px var(--border);
   display: grid;
   place-content: center;
   font-size: 1vmax;
@@ -36,10 +40,15 @@ body {
       & .imageBar {
         justify-self: center;
         align-items: center;
+
         grid-area: i;
         display: flex;
         flex-direction: row;
         gap: 2vw;
+        & img {
+          width: auto;
+          height: auto;
+        }
       }
       & hr {
         grid-area: h;
@@ -47,6 +56,7 @@ body {
       }
       & .title {
         grid-area: t;
+        scroll-behavior: smooth;
       }
       & .date {
         grid-area: d;

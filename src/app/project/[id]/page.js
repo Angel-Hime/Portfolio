@@ -4,12 +4,12 @@ import { db } from "@/utils/dbconnection";
 
 export default async function ProjectPage({ params }) {
   const { id } = await params;
-  console.log(id);
+  // console.log(id);
 
   const dbCall = (
     await db.query(`SELECT * FROM portfolio_projects WHERE entry_id = $1`, [id])
   ).rows[0];
-  console.log(dbCall);
+  // console.log(dbCall);
   // const formatter = new Intl.DateTimeFormat(`en-UK`, {
   //   hour: `2-digit`,
   //   minute: `2-digit`,

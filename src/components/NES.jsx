@@ -4,15 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import LoadingComponent from "./LoadingComponent";
+import ImageComponent from "./ImageComponent";
+import Modal from "./Modal";
 
 export default function NES({ nES, dbCall, projectDate }) {
   const [screenPower, setScreenPower] = useState(true);
   const images = dbCall?.screenshots.length - 1;
-  console.log(images); // number of images in array
-  const [image, setImage] = useState([0]);
-
+  // console.log(images); // number of images in array
+  const [image, setImage] = useState(0);
+  // console.log(image); // which image?
   const [loading, setLoading] = useState(false);
-
+  const i = dbCall?.screenshots;
   // load state timer
   async function delay(timeout) {
     return new Promise((resolve) => {
@@ -41,16 +43,7 @@ export default function NES({ nES, dbCall, projectDate }) {
       setScreenPower(true);
     }
   }
-  // scroll buttons
-  function handleScroll(direction) {
-    if (direction === "up") {
-      const screenWindow = document.getElementById("window");
-      screenWindow.scrollBy(0, -15);
-    } else if (direction === "down") {
-      const screenWindow = document.getElementById("window");
-      screenWindow.scrollBy(0, 15);
-    }
-  }
+
   // image variable buttons
   function handleImageChange(direction) {
     if (direction === "left") {
@@ -69,7 +62,8 @@ export default function NES({ nES, dbCall, projectDate }) {
       }
     }
   }
-  console.log(dbCall.screenshots[Number(image + 1)]);
+  // console.log(dbCall.screenshots[Number(image + 1)]);
+
   return (
     <>
       <main className={nES.mainDisplay}>
@@ -80,60 +74,58 @@ export default function NES({ nES, dbCall, projectDate }) {
               <LoadingComponent nES={nES} />{" "}
             </section>
           ) : screenPower ? (
-            <section>
-              {dbCall?.screenshots ? (
+            <section id="iB" className="scroll-smooth">
+              {dbCall?.screenshots[0].length > 0 ? (
                 <section className={nES.imageBar}>
                   {image > 0 && image <= images ? (
-                    <Image
-                      src={dbCall?.screenshots[Number(image - 1)]}
-                      alt={`image showing the web app ${dbCall.entry_title}`}
-                      width={200}
-                      height={100}
-                      loading="eager"
+                    <ImageComponent
+                      s={i[Number(image - 1)]}
+                      a={dbCall.entry_title}
+                      w={200}
+                      h={100}
+                      l="lazy"
+                      // have a tooltip hover with ("next image")
                     />
-                  ) : image < images && image === 0 ? (
-                    <Image
-                      src={dbCall?.screenshots[Number(images)]}
-                      alt={`image showing the web app ${dbCall.entry_title}`}
-                      width={200}
-                      height={100}
-                      loading="eager"
+                  ) : image === 0 ? (
+                    <ImageComponent
+                      s={i[Number(images)]}
+                      a={dbCall.entry_title}
+                      w={200}
+                      h={100}
+                      l="lazy"
+                      // have a tooltip hover with ("prev image")
                     />
                   ) : null}
-                  <Image
-                    src={dbCall?.screenshots[image]}
-                    alt={`image showing the web app ${dbCall.entry_title}`}
-                    width={700}
-                    height={300}
-                    loading="eager"
+                  <ImageComponent
+                    s={i[image]}
+                    a={dbCall.entry_title}
+                    w={700}
+                    h={300}
+                    l="eager"
                   />
                   {image < images && image >= 0 ? (
-                    <Image
-                      src={dbCall?.screenshots[Number(image + 1)]}
-                      alt={`image showing the web app ${dbCall.entry_title}`}
-                      width={200}
-                      height={100}
-                      loading="eager"
+                    <ImageComponent
+                      s={i[Number(image + 1)]}
+                      a={dbCall.entry_title}
+                      w={200}
+                      h={100}
+                      l="lazy"
+                      // have a tooltip hover with ("next image")
                     />
-                  ) : image > 0 && image <= images ? (
-                    <Image
-                      src={dbCall?.screenshots[Number(0)]}
-                      alt={`image showing the web app ${dbCall.entry_title}`}
-                      width={200}
-                      height={100}
-                      loading="eager"
+                  ) : image === images ? (
+                    <ImageComponent
+                      s={i[Number(0)]}
+                      a={dbCall.entry_title}
+                      w={200}
+                      h={100}
+                      l="lazy"
+                      // have a tooltip hover with ("prev image")
                     />
                   ) : null}
                 </section>
-              ) : (
-                <h2>
-                  {" "}
-                  Image not provide, click edit to update project: &quot;
-                  {dbCall.entry_title}&quot;
-                </h2>
-              )}
+              ) : null}
               <hr className={nES.hr} />
-              <div className={nES.title}>
+              <div id="pD" className={nES.title}>
                 <h2>Project Title:</h2>
                 <h3>{dbCall?.entry_title}</h3>
               </div>
@@ -190,7 +182,7 @@ export default function NES({ nES, dbCall, projectDate }) {
           {/* the left and right keys change the image */}
           <section className={nES.leftButtons}>
             <button
-              onClick={() => handleScroll("up")}
+              onClick={() => document.getElementById("iB").scrollIntoView()}
               className={`col-start-2 col-end-3 row-start-1 row-end-2`}
             ></button>
             <button
@@ -198,7 +190,7 @@ export default function NES({ nES, dbCall, projectDate }) {
               className={`col-start-3 col-end-4 row-start-2 row-end-3`}
             ></button>
             <button
-              onClick={() => handleScroll("down")}
+              onClick={() => document.getElementById("pD").scrollIntoView()}
               className={`col-start-2 col-end-3 row-start-3 row-end-4`}
             ></button>
             <button
@@ -206,13 +198,12 @@ export default function NES({ nES, dbCall, projectDate }) {
               className={`col-start-1 col-end-2 row-start-2 row-end-3`}
             ></button>
           </section>
-
           {/* these could both load a modal that has other projects on? */}
           <section className={nES.centreButtons}>
             <h2 className={nES.padLabel}>.A.P.</h2>
             <div>
-              <button className={nES.padButton}>Select</button>
-              <button className={nES.padButton}>Start</button>
+              <Modal nES={nES} t={"Select"} />
+              <Modal nES={nES} t={"Start"} />
             </div>
           </section>
           {/* code and visit */}

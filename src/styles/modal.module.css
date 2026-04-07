@@ -1,0 +1,163 @@
+/* Radix Dialog */
+
+.modalOverlay {
+  background-color: black;
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modalContent {
+  z-index: 1000;
+  background-color: var(--midground);
+  color: var(--foreground);
+  border-radius: 6px;
+  box-shadow:
+    -5px -5px 5px var(--border),
+    5px 5px 5px var(--border);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  height: 90vh;
+  padding: 1vmax;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+  &:focus {
+    outline: none;
+  }
+}
+
+.modalTitle {
+  margin: 0;
+  font-weight: 500;
+  color: var(--foreground);
+  font-size: 3vmax;
+}
+
+.modalDescription {
+  margin: 10px 0 20px;
+  color: var(--foreground);
+  font-size: 1.5vmax;
+  line-height: 1.5;
+}
+
+.modalContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 2vmax;
+  height: 50vh;
+  overflow-y: scroll;
+}
+
+.modalOption {
+  height: 45.6vh;
+  width: 34vw;
+  margin: 1vmax;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  & .image {
+    height: auto;
+    width: auto;
+  }
+  &:hover {
+    transform: scale(0.9);
+  }
+}
+
+.modalButton {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 500;
+  height: 35px;
+  user-select: none;
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--violet-6);
+    outline-offset: 1px;
+  }
+
+  &:global(.violet) {
+    background-color: var(--violet-4);
+    color: var(--violet-12);
+    outline-color: var(--violet-6);
+    &:hover {
+      background-color: var(--mauve-3);
+    }
+    &:focus {
+      box-shadow: 0 0 0 2px black;
+    }
+  }
+
+  &:global(.green) {
+    background-color: var(--green-4);
+    color: var(--green-11);
+    outline-color: var(--green-7);
+    &:hover {
+      background-color: var(--green-5);
+    }
+  }
+}
+
+.modalIconButton {
+  all: unset;
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--midground);
+  border: 2px solid var(--foreground);
+  color: var(--foreground);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--foreground);
+    border: 2px solid var(--midground);
+    color: var(--midground);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--violet-7);
+  }
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

@@ -4,7 +4,13 @@ import loadGIF from "@/../public/download.gif";
 export default function LoadingComponent() {
   return (
     <>
-      <Image height={500} src={loadGIF} unoptimized alt="loading..." />
+      <Image
+        height={500}
+        width={500}
+        src={loadGIF}
+        unoptimized
+        alt="loading..."
+      />
     </>
   );
 }

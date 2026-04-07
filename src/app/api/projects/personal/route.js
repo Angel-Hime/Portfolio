@@ -6,9 +6,10 @@ export async function GET(req, res) {
 
   try {
     // get user from db
-    // TODO: update to be 'WHERE situ = personal'
+
     const dbCall = await client.query(
-      `SELECT * FROM portfolio_projects ORDER BY entry_date`,
+      `SELECT * FROM portfolio_projects_personal ORDER BY entry_date`,
+      // `SELECT * FROM portfolio_projects WHERE type = "bootcamp" ORDER BY entry_date `
     );
     // console.log(dbCall);
     return Response.json(dbCall);
