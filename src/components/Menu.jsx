@@ -61,10 +61,10 @@ export default function Menu() {
           </div>
         </NavigationMenu.Item>
         <NavigationMenu.Item className={styles.Item}>
-          <NavigationMenu.Trigger className={styles.Trigger}>
+          {/* <NavigationMenu.Trigger className={styles.Trigger}>
             Portfolio <CaretDownIcon className={styles.CaretDown} aria-hidden />
-          </NavigationMenu.Trigger>
-          <NavigationMenu.Content className={styles.Content}>
+          </NavigationMenu.Trigger> */}
+          {/* <NavigationMenu.Content className={styles.Content}>
             <ul className={`${styles.List} one`}>
               <li style={{ gridRow: "span 3" }}>
                 <NavigationMenu.Link asChild>
@@ -93,7 +93,7 @@ export default function Menu() {
                 </NavigationMenu.Link>
               </li>
             </ul>
-          </NavigationMenu.Content>
+          </NavigationMenu.Content> */}
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className={styles.Item}>
