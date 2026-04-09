@@ -70,55 +70,49 @@ export default function NES({ nES, dbCall, projectDate }) {
         <section id={"window"} className={nES.windowDisplay}>
           {loading ? (
             <section>
-              {" "}
-              <LoadingComponent nES={nES} />{" "}
+              <LoadingComponent nES={nES} />
             </section>
           ) : screenPower ? (
-            <section id="iB" className="scroll-smooth">
+            <section id="iB">
               {dbCall?.screenshots[0].length > 0 ? (
                 <section className={nES.imageBar}>
                   {image > 0 && image <= images ? (
                     <ImageComponent
                       s={i[Number(image - 1)]}
-                      a={dbCall.entry_title}
+                      a={dbCall?.entry_title}
                       w={200}
                       h={100}
-                      l="lazy"
                       // have a tooltip hover with ("next image")
                     />
                   ) : image === 0 ? (
                     <ImageComponent
                       s={i[Number(images)]}
-                      a={dbCall.entry_title}
+                      a={dbCall?.entry_title}
                       w={200}
                       h={100}
-                      l="lazy"
                       // have a tooltip hover with ("prev image")
                     />
                   ) : null}
                   <ImageComponent
                     s={i[image]}
-                    a={dbCall.entry_title}
-                    w={700}
+                    a={dbCall?.entry_title}
+                    w={500}
                     h={300}
-                    l="eager"
                   />
                   {image < images && image >= 0 ? (
                     <ImageComponent
                       s={i[Number(image + 1)]}
-                      a={dbCall.entry_title}
+                      a={dbCall?.entry_title}
                       w={200}
                       h={100}
-                      l="lazy"
                       // have a tooltip hover with ("next image")
                     />
                   ) : image === images ? (
                     <ImageComponent
                       s={i[Number(0)]}
-                      a={dbCall.entry_title}
+                      a={dbCall?.entry_title}
                       w={200}
                       h={100}
-                      l="lazy"
                       // have a tooltip hover with ("prev image")
                     />
                   ) : null}
@@ -127,7 +121,9 @@ export default function NES({ nES, dbCall, projectDate }) {
               <hr className={nES.hr} />
               <div id="pD" className={nES.title}>
                 <h2>Project Title:</h2>
-                <h3>{dbCall?.entry_title}</h3>
+                <h3>
+                  {dbCall?.entry_title} - {dbCall?.entry_tag}
+                </h3>
               </div>
 
               <div className={nES.date}>
@@ -136,8 +132,13 @@ export default function NES({ nES, dbCall, projectDate }) {
               </div>
 
               <div className={nES.entryContent}>
+                <h2>Project Description:</h2>
+                <p>{dbCall?.entry_content}</p>
                 <h2>Project Requirements & Stretch Goals:</h2>
-                <p>{dbCall.entry_content}</p>
+                {/* map the requirements */}
+                <p>{dbCall?.entry_requirements}</p>
+                {/* map stretch goals */}
+                <p>{dbCall?.entry_stretch}</p>
               </div>
             </section>
           ) : null}

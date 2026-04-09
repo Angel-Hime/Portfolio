@@ -8,8 +8,9 @@ export default function LoadingComponent() {
         height={500}
         width={500}
         src={loadGIF}
-        unoptimized
+        loading="eager"
         alt="loading..."
+        className="h-auto w-auto"
       />
     </>
   );

@@ -5,7 +5,6 @@ body {
   place-items: center;
   gap: 1vh;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 .mainDisplay {
@@ -27,6 +26,7 @@ body {
     padding: 1vmax;
     background-color: var(--background);
     overflow-y: scroll;
+    overflow-x: hidden;
     & section {
       display: grid;
       grid-template-areas:
@@ -40,7 +40,6 @@ body {
       & .imageBar {
         justify-self: center;
         align-items: center;
-
         grid-area: i;
         display: flex;
         flex-direction: row;
@@ -52,18 +51,19 @@ body {
       }
       & hr {
         grid-area: h;
-        margin: 1vh 0;
+        margin: 2vh 0;
       }
       & .title {
         grid-area: t;
-        scroll-behavior: smooth;
       }
       & .date {
         grid-area: d;
       }
       & .entryContent {
         grid-area: c;
-        margin: 1vh 0;
+        & h2 {
+          margin: 2vmax;
+        }
       }
     }
   }
@@ -73,7 +73,8 @@ body {
   }
   & p,
   h3 {
-    text-align: center;
+    text-align: justify;
+    margin: 1vmax;
   }
 }
 .systemMain {
