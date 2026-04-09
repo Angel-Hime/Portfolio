@@ -18,11 +18,11 @@ export default function Menu() {
                 Home
               </NavigationMenu.Link>
             </NavigationMenu.Item>
-            <NavigationMenu.Item className={styles.Item}>
+            {/* <NavigationMenu.Item className={styles.Item}>
               <NavigationMenu.Link className={styles.Link} href={"/about"}>
                 About
               </NavigationMenu.Link>
-            </NavigationMenu.Item>
+            </NavigationMenu.Item> */}
           </>
         ) : urlData === "/about" ? (
           <>
@@ -31,11 +31,11 @@ export default function Menu() {
                 Home
               </NavigationMenu.Link>
             </NavigationMenu.Item>
-            <NavigationMenu.Item className={styles.Item}>
+            {/* <NavigationMenu.Item className={styles.Item}>
               <NavigationMenu.Link className={styles.LinkOne} href={"/about"}>
                 About
               </NavigationMenu.Link>
-            </NavigationMenu.Item>
+            </NavigationMenu.Item> */}
           </>
         ) : null}
 
