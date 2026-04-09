@@ -86,7 +86,7 @@ export default function SideScroll({ route }) {
               With an end-goal focus and a client driven perspective, I strive
               to provide the best results that I can; allowing my passions to
               take me to the finish line!
-              <Link href={`/about`}> Read More... </Link>
+              {/* <Link href={`/about`}> Read More... </Link> */}
             </p>
             <h2>Portfolio Projects</h2>
           </div>{" "}
