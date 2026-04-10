@@ -5,8 +5,8 @@ import * as right from "@/../public/arrow-right.png";
 
 export default function ProjectCartGallery({ styles, entries, Dialog }) {
   const scrollBar = document.getElementById("scrollBar");
-  const scrollBarWidth = scrollBar?.clientWidth;
-  const itemWidth = (scrollBarWidth / entries.length) * 2;
+  const cart = document.getElementById("cart");
+  const itemWidth = cart * 1.2;
   console.log(itemWidth);
 
   //   function handleLeft() {
@@ -25,7 +25,7 @@ export default function ProjectCartGallery({ styles, entries, Dialog }) {
       <Image
         className={styles.arrow}
         onClick={() =>
-          scrollBar?.scrollBy({ top: 0, left: -itemWidth, behavior: "smooth" })
+          scrollBar.scrollBy({ top: 0, left: -itemWidth, behavior: "smooth" })
         }
         src={left}
         alt={"scroll bar left"}
@@ -62,7 +62,7 @@ export default function ProjectCartGallery({ styles, entries, Dialog }) {
       <Image
         className={styles.arrow}
         onClick={() =>
-          scrollBar?.scrollBy({ top: 0, left: itemWidth, behavior: "smooth" })
+          scrollBar.scrollBy({ top: 0, left: itemWidth, behavior: "smooth" })
         }
         src={right}
         alt={"scroll bar right"}
