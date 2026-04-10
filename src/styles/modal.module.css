@@ -11,11 +11,12 @@
 .modalContent {
   z-index: 1000;
   background-color: var(--midground);
-  color: var(--foreground);
   border-radius: 6px;
   box-shadow:
-    -5px -5px 5px var(--border),
-    5px 5px 5px var(--border);
+    -15px -15px 15px var(--border),
+    15px -15px 15px var(--border),
+    -15px 15px 15px var(--border),
+    15px 15px 15px var(--border);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -33,6 +34,11 @@
   }
 }
 
+.modalTitle,
+.modalDescription {
+  color: var(--background);
+  text-shadow: 4px 5px 4px var(--shadow-color);
+}
 .modalTitle {
   margin: 0;
   font-weight: 500;
@@ -46,14 +52,41 @@
   font-size: 1.5vmax;
   line-height: 1.5;
 }
-
-.modalContainer {
+.scrollBar {
   display: flex;
-  flex-flow: row wrap;
+  gap: 3vw;
   justify-content: center;
+  align-items: center;
+  & .arrow {
+    cursor: pointer;
+    padding: 1vmax;
+    height: 6vmax;
+    width: 6vmax;
+    & img {
+      height: auto;
+      width: auto;
+    }
+    &:hover {
+      height: 8vmax;
+    }
+  }
+}
+.modalContainer {
+  box-shadow:
+    15px 15px 10px var(--border),
+    15px -15px 10px var(--border),
+    -15px 15px 10px var(--border),
+    -15px -15px 10px var(--border);
+  border-radius: 5vmax;
+  display: flex;
+  /* flex-flow: row wrap; */
+  align-self: center;
+  /* justify-content: center; */
   gap: 2vmax;
   height: 50vh;
-  overflow-y: scroll;
+  width: 80vw;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .modalOption {
@@ -64,6 +97,7 @@
   justify-content: center;
   border-radius: 10px;
   & .image {
+    min-width: 30vw;
     height: auto;
     width: auto;
   }
@@ -91,27 +125,6 @@
   &:focus-visible {
     outline: 2px solid var(--violet-6);
     outline-offset: 1px;
-  }
-
-  &:global(.violet) {
-    background-color: var(--violet-4);
-    color: var(--violet-12);
-    outline-color: var(--violet-6);
-    &:hover {
-      background-color: var(--mauve-3);
-    }
-    &:focus {
-      box-shadow: 0 0 0 2px black;
-    }
-  }
-
-  &:global(.green) {
-    background-color: var(--green-4);
-    color: var(--green-11);
-    outline-color: var(--green-7);
-    &:hover {
-      background-color: var(--green-5);
-    }
   }
 }
 

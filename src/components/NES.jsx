@@ -93,12 +93,14 @@ export default function NES({ nES, dbCall, projectDate }) {
                       // have a tooltip hover with ("prev image")
                     />
                   ) : null}
+
                   <ImageComponent
                     s={i[image]}
                     a={dbCall?.entry_title}
                     w={500}
                     h={300}
                   />
+
                   {image < images && image >= 0 ? (
                     <ImageComponent
                       s={i[Number(image + 1)]}

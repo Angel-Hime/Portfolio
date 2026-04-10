@@ -1,13 +1,11 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
-
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import * as styles from "@/styles/modal.module.css";
-import Link from "next/link";
-import HideHeader from "./HideHeader";
-import ImageComponent from "./ImageComponent";
+import ProjectCartridges from "./ProjectCartridges";
+import ProjectCartGallery from "./ProjectCartGallery";
 
 export default function Modal({ nES, handle, t }) {
   const [entries, setEntries] = useState([" "]);
@@ -44,26 +42,18 @@ export default function Modal({ nES, handle, t }) {
             Choose a new project to load
           </Dialog.Description>
 
-          <section className={styles.modalContainer}>
-            {entries.map((entry) => (
-              <Dialog.Close asChild key={entry.entry_id}>
-                <Link
-                  href={`/project/${entry.entry_id}`}
-                  className={styles.modalOption}
-                >
-                  {entry.screenshots ? (
-                    <ImageComponent
-                      c={styles.image}
-                      s={entry.cart}
-                      a={entry.entry_title}
-                      w={400}
-                      h={300}
-                    />
-                  ) : null}
-                </Link>
-              </Dialog.Close>
-            ))}
-          </section>
+          {/* <ProjectCartridges
+            Dialog={Dialog}
+            styles={styles}
+            entries={entries}
+          /> */}
+
+          <ProjectCartGallery
+            styles={styles}
+            entries={entries}
+            Dialog={Dialog}
+          />
+
           <div>
             <Dialog.Close asChild>
               <button className={nES.padButton}>Return</button>

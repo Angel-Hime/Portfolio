@@ -27,6 +27,7 @@ body {
     background-color: var(--background);
     overflow-y: scroll;
     overflow-x: hidden;
+    scroll-behavior: smooth;
     & section {
       display: grid;
       grid-template-areas:
@@ -77,6 +78,7 @@ body {
     margin: 1vmax;
   }
 }
+
 .systemMain {
   width: 70vw;
   display: flex;

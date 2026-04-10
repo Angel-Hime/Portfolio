@@ -1,8 +1,0 @@
-.page {
-  margin: 20vh 2vw;
-  display: flex;
-  flex-direction: column;
-  & section {
-    font-size: 4vmax;
-  }
-}

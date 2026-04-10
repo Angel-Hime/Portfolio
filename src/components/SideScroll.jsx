@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 // styles
 import * as sideScroll from "@/styles/sideScroll.module.css";
-import face from "@/../public/heroImage.png";
-import Image from "next/image";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ImageComponent from "./ImageComponent";
+import IntroBlock from "./IntroBlock";
 
 export default function SideScroll({ route }) {
   const [entries, setEntries] = useState([" "]);
@@ -66,30 +66,8 @@ export default function SideScroll({ route }) {
     <>
       {urlData === "/" ? (
         <section className={sideScroll.intro_section}>
-          <div className={sideScroll.hero}>
-            <Image
-              src={face}
-              height={400}
-              width={400}
-              alt={"Annabel Peart"}
-              loading="eager"
-            />
-          </div>
-          <div>
-            <h1>Annabel Peart</h1>
-            <p>
-              A budding Software Developer with strengths in both front-end and
-              back-end JavaScript functionality.
-            </p>
-            <p>
-              {" "}
-              With an end-goal focus and a client driven perspective, I strive
-              to provide the best results that I can; allowing my passions to
-              take me to the finish line!
-              {/* <Link href={`/about`}> Read More... </Link> */}
-            </p>
-            <h2>Portfolio Projects</h2>
-          </div>{" "}
+          <IntroBlock sideScroll={sideScroll} urlData={urlData} />{" "}
+          <h2 className={sideScroll.portfolioHeading}>Portfolio Projects</h2>
         </section>
       ) : urlData === "/project/bootcamp" ? (
         <section className={sideScroll.intro_section_bp}>
