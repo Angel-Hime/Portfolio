@@ -85,7 +85,7 @@
   gap: 2vmax;
   height: 50vh;
   width: 80vw;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
 }
 

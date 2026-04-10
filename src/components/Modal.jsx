@@ -10,7 +10,7 @@ import ProjectCartGallery from "./ProjectCartGallery";
 export default function Modal({ nES, handle, t }) {
   const [entries, setEntries] = useState([" "]);
   const urlData = usePathname();
-
+  const [modalToggle, setModalToggle] = useState(null);
   useEffect(() => {
     async function fetchProjects() {
       try {
@@ -41,12 +41,6 @@ export default function Modal({ nES, handle, t }) {
           <Dialog.Description className={styles.modalDescription}>
             Choose a new project to load
           </Dialog.Description>
-
-          {/* <ProjectCartridges
-            Dialog={Dialog}
-            styles={styles}
-            entries={entries}
-          /> */}
 
           <ProjectCartGallery
             styles={styles}
